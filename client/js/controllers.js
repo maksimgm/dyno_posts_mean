@@ -1,5 +1,3 @@
-var app = angular.module('dynoPosts',[]);
-
 app.controller('MainController',["$scope",function($scope){
   $scope.postToggle= false;
 
@@ -39,4 +37,3 @@ app.controller('MainController',["$scope",function($scope){
     post.votes--;
   };
 }]);
-
