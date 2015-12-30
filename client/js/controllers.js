@@ -1,20 +1,35 @@
-app.controller('MainController',["$scope",function($scope){
+app.controller('MainController',["$scope","PostService","$location", function($scope, PostService, $location){
+  
+  PostService.getPosts().then(function(posts){
+    $scope.posts = [
+      {title: 'post 1', votes: 5},
+      {title: 'post 2', votes: 2},
+      {title: 'post 3', votes: 15},
+      {title: 'post 4', votes: 9},
+      {title: 'post 5', votes: 4}
+    ];
+
+    $scope.incremVotes = function(post){
+      post.votes++;
+    };
+
+    $scope.decremVotes = function(post){
+      post.votes--;
+    };
+
+  });
+}]);
+
+app.controller('NewController',['$scope','TodoService','$location',function($scope,TodoService,$location){
   $scope.postToggle= false;
 
   $scope.formToggle = function(){
     $scope.postToggle = true;
   };  
 
-  $scope.posts = [
-    {title: 'post 1', votes: 5},
-    {title: 'post 2', votes: 2},
-    {title: 'post 3', votes: 15},
-    {title: 'post 4', votes: 9},
-    {title: 'post 5', votes: 4}
-  ];
-  $scope.addPost = function(){
-    $scope.postToggle = false;
-  };
+  // $scope.addPost = function(){
+  //   $scope.postToggle = false;
+  // };
 
   $scope.addPost = function(){
     $scope.postToggle = false;
@@ -27,13 +42,5 @@ app.controller('MainController',["$scope",function($scope){
     });
       $scope.data.link = '';
       $scope.data.title = '';
-  };
-
-  $scope.incremVotes = function(post){
-    post.votes++;
-  };
-
-  $scope.decremVotes = function(post){
-    post.votes--;
   };
 }]);

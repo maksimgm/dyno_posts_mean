@@ -3,15 +3,15 @@ var app = angular.module('dynoPosts',['ngRoute']);
 app.config(["$routeProvider","$locationProvider",function($routeProvider,$locationProvider){
   $routeProvider.
   when('/posts',{
-    templateUrl: './templates.allPosts.html',
+    templateUrl: './templates/allPosts.html',
     controller: 'MainController'
   }).
   when('posts/new',{
-    templateUrl: './templates.newPosts.html',
+    templateUrl: './client/js/templates/newPost.html',
     controller: 'MainController'
   }).
   when('/posts/:id/edit',{
-    templateUrl: './templates.editPosts.html',
+    templateUrl: './client/js/templates/editPost.html',
     controller: 'MainController'
   }).
   otherwise({redirectTo: '/posts'});
