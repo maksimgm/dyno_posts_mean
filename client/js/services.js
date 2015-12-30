@@ -5,7 +5,7 @@ app.service("PostService",["$http",function($http){
     },
 
     addPost: function(post){
-      return $http.post('/api/posts', todo);
+      return $http.post('/api/posts', post);
     }
 
   //   editPost: function(post){
