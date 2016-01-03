@@ -6,6 +6,7 @@ var db = require("../models");
 router.get('/', function(req, res) {
   db.Post.find({},function(err,posts){
     if(err) return res.json({err:err.message});
+    console.log(posts)
     res.status(200).send(posts);
   });
 });
@@ -15,6 +16,7 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
   db.Post.create(req.body,function(err,post){
     if(err) return res.json({err:err.message});
+    // res.redirect("/posts");
     res.json(post);
   });
 });
