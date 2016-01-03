@@ -1,5 +1,4 @@
 // 'Cancel toggle not working'
-// 'new posts show after refresh'
 // increm and decrem===NaN...
 
 app.controller('MainController',["$scope","PostService","$location", function($scope, PostService, $location){
@@ -21,7 +20,7 @@ app.controller('MainController',["$scope","PostService","$location", function($s
   // if(!$scope.data.title || $scope.data.title === '')return;
 
   $scope.formToggle = function(){
-    $scope.postToggle = true;
+    $scope.postToggle = !$scope.postToggle;
   };  
   // $scope.posts.push({
   //   title: $scope.data.title,
