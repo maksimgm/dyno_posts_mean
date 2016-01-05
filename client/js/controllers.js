@@ -8,7 +8,7 @@ app.controller('MainController',["$scope","PostService","$location", function($s
   $scope.formToggle = function(){
     $scope.postToggle = !$scope.postToggle;
   };
-
+  //add a post to the DB and the array on the front end
   $scope.addPost = function(post){
     //   // BREAKS ON LINE 22...
     $scope.post.votes = 0;
@@ -25,18 +25,16 @@ app.controller('MainController',["$scope","PostService","$location", function($s
         $scope.post.title = '';
         $scope.formToggle();
       }
-
-
       $location.path('/posts');
     });
   };
-
+  //incremment and decrement votes on front end and send update to the DB
   $scope.incremVotes = function(post){
-    post.votes++
+    post.votes++;
     PostService.editPost(post).then(function(data) {
 
     })
-  }
+  };
 
   $scope.decremVotes = function(post){
     post.votes--;
@@ -46,8 +44,15 @@ app.controller('MainController',["$scope","PostService","$location", function($s
   }
 }]);
 
-app.controller('EditVotesController',["$scope","PostService","$location",function($scope, PostService, $location){
+app.controller('EditController',["$scope","PostService","$location","$routeParams",function($scope, PostService, $location, $routeParams){
+  PostService.editPost($routeParams.id).then(function(post){
+    $scope.post = post.data;
+  });
 
+    $scope.editPost = function(post){
+      PostService.editPost(post).then(function(data){
 
+      });
+    }
 
 }]);

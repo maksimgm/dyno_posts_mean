@@ -6,10 +6,9 @@ app.config(["$routeProvider","$locationProvider",function($routeProvider,$locati
     templateUrl: './templates/allPosts.html',
     controller: 'MainController'
   }).
-  //    would the url for editing a vote still be /posts,since I am not redirecting
   when('/posts/:id/edit',{
     templateUrl: './editPost.html',
-    controller: 'EditVotesController'
+    controller: 'EditController'
   }).
   otherwise({redirectTo: '/posts'});
 
