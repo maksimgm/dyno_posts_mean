@@ -1,15 +1,9 @@
 app.controller('MainController',["$scope","PostService","$location", function($scope, PostService, $location){
-
   PostService.getPosts().then(function(posts){
     $scope.posts = posts.data;
-    // SEND  UPDATED VOTES TO DB
-    // DOES THIS NEED TO BE INSIDE OF AN EDIT???
-
-
   });
 
   $scope.postToggle = false;
-  // if(!$scope.data.title || $scope.data.title === '')return;
 
   $scope.formToggle = function(){
     $scope.postToggle = !$scope.postToggle;
@@ -20,6 +14,7 @@ app.controller('MainController',["$scope","PostService","$location", function($s
     $scope.post.votes = 0;
     PostService.addPost(post).then(function(data){
       console.log(data);
+      //if(data.data.title !== '' || data.data.title) return;
       if(data){
         $scope.posts.push({
           title: data.data.title,
@@ -35,15 +30,24 @@ app.controller('MainController',["$scope","PostService","$location", function($s
       $location.path('/posts');
     });
   };
-//
-//  console.log(data)
-//
-//  $scope.editPost = PostService.editPost(post).then(function(data) {
-//
-//    // logic for rendering on the frony
-//    // ADD DELETE A POST INSIDE OF THIS CONTROLLER
-//  })
+
+  $scope.incremVotes = function(post){
+    post.votes++
+    PostService.editPost(post).then(function(data) {
+
+    })
+  }
+
+  $scope.decremVotes = function(post){
+    post.votes--;
+    PostService.editPost(post).then(function(data) {
+
+    });
+  }
 }]);
-//
-//// 'Cancel toggle not working'
-//// increm and decrem===NaN...
+
+app.controller('EditVotesController',["$scope","PostService","$location",function($scope, PostService, $location){
+
+
+
+}]);
