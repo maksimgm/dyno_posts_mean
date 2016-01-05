@@ -6,11 +6,11 @@ app.service("PostService",["$http",function($http){
 
     addPost: function(post){
       return $http.post('/api/posts', post);
-    }
-
-  //   editPost: function(post){
-  //     return $http.put('/api/posts/'+post._id,post);
-  //   },
+    },
+    //
+    //editPost: function(post){
+    //  return $http.put('/api/posts/'+ post._id, post);
+    //}
 
   //   getAPost: function(id){
   //     return $http.get('/api/posts/'+id);
