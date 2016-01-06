@@ -45,13 +45,13 @@ app.controller('MainController',["$scope","PostService","$location", function($s
 }]);
 
 app.controller('EditController',["$scope","PostService","$location","$routeParams",function($scope, PostService, $location, $routeParams){
-  PostService.editPost($routeParams.id).then(function(post){
+  PostService.getAPost($routeParams.id).then(function(post){
     $scope.post = post.data;
   });
 
     $scope.editPost = function(post){
       PostService.editPost(post).then(function(data){
-
+        $location.path("/posts")
       });
     }
 

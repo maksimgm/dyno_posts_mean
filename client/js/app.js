@@ -7,7 +7,7 @@ app.config(["$routeProvider","$locationProvider",function($routeProvider,$locati
     controller: 'MainController'
   }).
   when('/posts/:id/edit',{
-    templateUrl: './editPost.html',
+    templateUrl: './templates/editPost.html',
     controller: 'EditController'
   }).
   otherwise({redirectTo: '/posts'});

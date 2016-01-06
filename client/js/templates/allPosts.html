@@ -1,3 +1,7 @@
+<style type="text/css">
+  .btn-danger {
+  }
+</style>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -43,8 +47,8 @@
         {{post.title}}
       </span>
       <div class="postBtns">
-        <button type="button" class="btn btn-info btn-md" ng-click="editPost(post)">Edit</button>
-        <button type="button" class="btn btn-danger btn-md">Delete</button>
+        <a type="button" class="btn btn-info btn-md" ng-href="/posts/{{post._id}}/edit">Edit</a>
+        <a type="button" class="btn btn-danger btn-md">Delete</a>
       </div>
     </div>
   </div>
