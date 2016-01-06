@@ -1,11 +1,7 @@
-<style type="text/css">
-  .btn-danger {
-  }
-</style>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a href="#" class="navbar-brand">Dyno Share</a>
+      <a href="/posts" class="navbar-brand"><img src="img/dyno.jpg" alt="Dyno Share Logo"></a>
       <ul class="nav navbar-nav navbar-right">
         <li><a ng-click='formToggle()'>Add New Post</a></li>
       </ul>
@@ -32,7 +28,7 @@
 <!-- all posts -->
 <div class="container">
   <div class="col-xs-8 col-xs-offset-2">
-    <div ng-repeat="post in posts | orderBy: '-votes'" class="postsCon">
+    <div ng-repeat="post in posts track by $index | orderBy: '-votes'" class="postsCon">
       <div class="col-xs-2 col-xs-offset-1">
         <span ng-click="incremVotes(post)"class="glyphicon glyphicon-arrow-up"></span><br>
         <span class="numVotes" ng-class="{upvote: post.votes>0, downvote: post.votes<0}">
@@ -48,7 +44,7 @@
       </span>
       <div class="postBtns">
         <a type="button" class="btn btn-info btn-md" ng-href="/posts/{{post._id}}/edit">Edit</a>
-        <a type="button" class="btn btn-danger btn-md">Delete</a>
+        <a type="button" class="btn btn-danger btn-md" ng-click="deleteAPost(post._id)">Delete</a>
       </div>
     </div>
   </div>

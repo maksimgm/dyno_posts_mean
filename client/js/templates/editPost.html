@@ -1,7 +1,7 @@
 <div class="editBody">
     <div class="container">
         <div class="col-xs-8 col-xs-offset-2">
-            <form action="javascript:void(0)" class="well">
+            <form action="javascript:void(0)" class="well" ng-submit="editPost(post)">
             <div class="form group">
                     <label for="title">Title</label>
                     <input type="text" class="form-control" ng-model="post.title" id="title">
@@ -10,7 +10,7 @@
                     <label for="link">Link</label>
                     <input type="text" class="form-control" ng-model="post.link" id="link">
                 </div>
-                <a type="button" class="btn btn-success btn-md btn-right">Submit Changes</a>
+                <input type="submit" class="btn btn-success btn-md"></input>
             </form>
         </div>
     </div>

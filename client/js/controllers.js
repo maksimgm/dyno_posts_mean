@@ -13,10 +13,9 @@ app.controller('MainController',["$scope","PostService","$location", function($s
     //   // BREAKS ON LINE 22...
     $scope.post.votes = 0;
     PostService.addPost(post).then(function(data){
-      console.log(data);
-      //if(data.data.title !== '' || data.data.title) return;
       if(data){
         $scope.posts.push({
+          _id: data.data._id,
           title: data.data.title,
           link: data.data.link,
           votes: 0
@@ -40,6 +39,14 @@ app.controller('MainController',["$scope","PostService","$location", function($s
     post.votes--;
     PostService.editPost(post).then(function(data) {
 
+    });
+  }
+
+  $scope.deleteAPost = function(id){
+    PostService.deleteAPost(id).then(function(){
+      PostService.getPosts().then(function(posts){
+        $scope.posts = posts.data;
+      });
     });
   }
 }]);
