@@ -30,7 +30,10 @@ router.get('/:id',function(req,res){
 // edit a post
 router.put('/:id',function(req,res){
   db.Post.findByIdAndUpdate(req.params.id, req.body, function(err,post){
-    if(err) return res.json({err:err.message});
+    if(err) {
+      var json = res.json({err:err.message});
+      return json;
+    }
     res.status(200).send(post);
   });
 });
@@ -43,3 +46,4 @@ router.delete('/:id',function(req,res){
 });
 
 module.exports = router;
+

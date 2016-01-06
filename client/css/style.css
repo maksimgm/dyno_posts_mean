@@ -19,27 +19,38 @@
 .postsCon{
   display: block;
   margin-top: 30px;
+  padding: 12px 5px 12px 15px;
   height: 100px;
   width: 400px;
-  border: 2px teal solid;
-  border-radius: 20px;
-  box-shadow: 10px 10px 10px grey;
-  padding-top: 10px;
-  
+  border: 3px lightskyblue solid;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px teal;
+
 }
+.glyphicon-chevron-up, .glyphicon-chevron-down{
+  font-size: 1.6em;
+}
+.glyphicon-chevron-up:hover, .glyphicon-chevron-down:hover{
+  text-shadow: 2px 2px 2px #000;
+}
+
 .newPost{
   border-bottom: 40px;
 }
 .numVotes{
-  display: inline-block;
   font-size: 16px;
   margin: auto;
   font-weight: bold;
-  padding: 3px;
+  /*add dynamic padding*/
 }
 
 .postBtns{
   margin-top: 15px;
+}
+.allPostsFont{
+  color: #333333;
+  font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
+  font-size: 16px;
 }
 /*edit form*/
 
