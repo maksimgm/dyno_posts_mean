@@ -29,17 +29,19 @@
 }
 .glyphicon-chevron-up, .glyphicon-chevron-down{
   font-size: 1.6em;
+  display: inline-block;
 }
 .glyphicon-chevron-up:hover, .glyphicon-chevron-down:hover{
   text-shadow: 2px 2px 2px #000;
 }
-
 .newPost{
   border-bottom: 40px;
 }
 .numVotes{
   font-size: 16px;
-  margin: auto;
+  display: block;
+  height: 5px;
+  width: 80%;
   font-weight: bold;
   /*add dynamic padding*/
 }
