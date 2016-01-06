@@ -10,6 +10,10 @@ app.config(["$routeProvider","$locationProvider",function($routeProvider,$locati
     templateUrl: './templates/editPost.html',
     controller: 'EditController'
   }).
+  when('/posts/login',{
+    templateUrl: './templates/login.html',
+    controller: 'UserController'
+  }).
   otherwise({redirectTo: '/posts'});
 
   $locationProvider.html5Mode(true);
