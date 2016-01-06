@@ -1,7 +1,10 @@
 .ng-cloak{
   display: none !important;
 }
-
+.dynoLogo{
+  height: 33px;
+  width: 33px;
+}
 .upvote{
   color: green;
 }

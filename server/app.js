@@ -15,6 +15,7 @@ app.use(morgan('tiny'));
 
 app.use('/css',express.static(path.join(__dirname, "../client/css")));
 app.use('/js',express.static(path.join(__dirname, "../client/js")));
+app.use('/img',express.static(path.join(__dirname, "../client/img")));
 app.use('/templates',express.static(path.join(__dirname, "../client/js/templates")));
 
 // prefix added to the begining of a path in the 'todoRoutes'
