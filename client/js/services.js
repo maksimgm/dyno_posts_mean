@@ -18,7 +18,7 @@ app.service("PostService",["$http",function($http){
 
      deleteAPost: function(id){
        return $http.delete('/api/posts/'+ id);
-     }
+     },
     
   };
 }]);
