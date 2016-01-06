@@ -12,13 +12,16 @@ app.service("PostService",["$http",function($http){
       return $http.put('/api/posts/'+ post._id, post);
     },
 
-     getAPost: function(id){
-       return $http.get('/api/posts/'+id);
-     },
+    getAPost: function(id){
+      return $http.get('/api/posts/'+id);
+    },
 
-     deleteAPost: function(id){
-       return $http.delete('/api/posts/'+ id);
-     },
-    
+    deleteAPost: function(id){
+      return $http.delete('/api/posts/'+ id);
+    },
+    //add api on the backend
+    loginUser: function(user){
+        return $http.post('/api/users',user)
+    }
   };
 }]);

@@ -63,3 +63,12 @@ app.controller('EditController',["$scope","PostService","$location","$routeParam
     }
 
 }]);
+
+app.controller('UserController',["$scope","PostService","$location","$routeParams", function($scope, PostService, $location, $routeParams){
+  $scope.login = function(user){
+    console.log(user);
+    PostService.loginUser(user).then(function(data){
+      console.log(data);
+    });
+  }
+}]);
