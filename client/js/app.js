@@ -17,7 +17,7 @@ app.config(["$routeProvider","$locationProvider",function($routeProvider,$locati
   when('/signup',{
     templateUrl: './templates/signup.html',
     controller: 'SignupController'
-  });
+  }).
   otherwise({redirectTo: '/posts'});
 
   $locationProvider.html5Mode(true);
