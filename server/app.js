@@ -8,7 +8,7 @@ var path = require('path');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 //pass passport for config
-require('./config/passport')(passport);
+//require('./config/passport')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -16,7 +16,11 @@ app.use(passport.session());
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 app.use(session({
-  secret: 'this is the secret'
+  secret: 'this is the secret',
+  name: "secret",
+  proxy: true,
+  resave: true,
+  saveUninitialized: true
 }));
 app.use(cookieParser());
 
@@ -38,7 +42,6 @@ app.use('/api/posts', postRoutes);
 app.use('/api/users', userRoutes);
 
 app.get("*", function(req,res){
-  var cool = path.join(__dirname, '../client', 'index.html');
   res.sendFile(path.join(__dirname, '../client', 'index.html'));
 });
 
