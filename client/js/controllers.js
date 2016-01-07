@@ -64,11 +64,26 @@ app.controller('EditController',["$scope","PostService","$location","$routeParam
 
 }]);
 
-app.controller('UserController',["$scope","PostService","$location","$routeParams", function($scope, PostService, $location, $routeParams){
+app.controller('LoginController',["$scope","$rootScope","$location","$routeParams","$http", function($scope, $rootScope, PostService, $location, $routeParams, $http){
+  //loging in a user
   $scope.login = function(user){
     console.log(user);
-    PostService.loginUser(user).then(function(data){
-      console.log(data);
-    });
+    $http.post('/api/login', user)
+        .then(function(data){
+          $rootScope.currentUser = data
+          $location.url('/posts')
+        })
+  }
+}]);
+
+app.controller('SignupController',["$scope","$rootScope","$location","$routeParams","$http", function($scope, $rootScope, PostService, $location, $routeParams, $http){
+//signing up a user
+  $scope.signup = function(user){
+    console.log(user);
+    $http.post('/signup', user)
+        .then(function(data){
+          $rootScope.currentUser = user;
+          console.log(user);
+        });
   }
 }]);

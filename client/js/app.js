@@ -12,11 +12,11 @@ app.config(["$routeProvider","$locationProvider",function($routeProvider,$locati
   }).
   when('/login',{
     templateUrl: './templates/login.html',
-    controller: 'UserController'
+    controller: 'LoginController'
   }).
   when('/signup',{
     templateUrl: './templates/signup.html',
-    controller: 'UserController'
+    controller: 'SignupController'
   });
   otherwise({redirectTo: '/posts'});
 
