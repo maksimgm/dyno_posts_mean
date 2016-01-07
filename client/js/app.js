@@ -6,7 +6,7 @@ app.config(["$routeProvider","$locationProvider",function($routeProvider,$locati
     templateUrl: './templates/allPosts.html',
     controller: 'MainController'
   }).
-  when('/posts/:id/edit',{
+  when('/post/:id/edit',{
     templateUrl: './templates/editPost.html',
     controller: 'EditController'
   }).

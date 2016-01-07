@@ -4,12 +4,26 @@ var postRoutes = require('./routes/posts');
 var userRoutes = require('./routes/users');
 var path = require('path');
 
+//Passport
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+//pass passport for config
+require('./config/passport')(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+
+//Cookie and session
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+app.use(session({
+  secret: 'this is the secret'
+}));
+app.use(cookieParser());
+
 var bodyParser = require("body-parser");
 app.use(bodyParser.json());
-
-// angular handels the put and delete using http requests.
-// var methodOverride = require('method-override');
-// app.use(methodOverride('_method'));
+var methodOverride = require('method-override');
+app.use(methodOverride('_method'));
 
 var morgan = require('morgan');
 app.use(morgan('tiny'));
