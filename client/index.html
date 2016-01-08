@@ -13,13 +13,13 @@
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-<base href="/">
+<!--<base href="/">-->
 
 </head>
 <nav class="navbar navbar-default" ng-controller="NavController">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a href="/posts" class="navbar-brand"><img ng-src="../img/dyno.png" alt="Dyno Share Logo" class="dynoLogo"></a>
+      <a href="#posts" class="navbar-brand"><img ng-src="../img/dyno.png" alt="Dyno Share Logo" class="dynoLogo"></a>
     </div>
     <div class="nav navbar-nav navbar-right">
       <span ng-show="!currentUser">
@@ -38,6 +38,7 @@
   </div>
 </nav>
 <body>
+ {{currentUser}}
   <div ng-view></div>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-route.js"></script>

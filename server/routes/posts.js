@@ -10,11 +10,13 @@ var db = require("../models");
     });
   });
 
-
   // post a post
   router.post('/', function(req, res) {
     db.Post.create(req.body,function(err,post){
       if(err) return res.json({err:err.message});
+      //referencing a User--to a Post
+      //post.user = req.session.id
+      //post.save()
       res.json(post);
     });
   });
@@ -37,7 +39,8 @@ var db = require("../models");
       res.status(200).send(post);
     });
   });
-  // delete a todo
+
+  // delete a post
   router.delete('/:id',function(req,res){
     console.log(req.params.id);
     db.Post.findByIdAndRemove(req.params.id,function(err,post){

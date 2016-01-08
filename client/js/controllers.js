@@ -1,4 +1,4 @@
-app.controller('MainController',["$scope","PostService","$location", function($scope, PostService, $location){
+app.controller('MainController',["$scope","PostService","$location","$rootScope", function($scope, PostService, $location, $rootScope){
   PostService.getPosts().then(function(posts){
     $scope.posts = posts.data;
   });
@@ -8,9 +8,10 @@ app.controller('MainController',["$scope","PostService","$location", function($s
   $scope.formToggle = function(){
     $scope.postToggle = !$scope.postToggle;
   };
-
+  //$scope.user =
   $scope.addPost = function(post){
     $scope.post.votes = 0;
+    //$scope.post.user = user
     PostService.addPost(post).then(function(data){
       if(data){
         $scope.posts.push({
@@ -50,7 +51,7 @@ app.controller('MainController',["$scope","PostService","$location", function($s
   }
 }]);
 
-app.controller('EditController',["$scope","PostService","$location","$routeParams",function($scope, PostService, $location, $routeParams){
+app.controller('EditController',["$scope","PostService","$location","$routeParams","$rootScope", function($scope, PostService, $location, $routeParams, $rootScope){
   PostService.getAPost($routeParams.id).then(function(post){
     $scope.post = post.data;
   });
@@ -62,6 +63,7 @@ app.controller('EditController',["$scope","PostService","$location","$routeParam
     }
 
 }]);
+
 
 app.controller("NavController", function($rootScope, $scope, $http, $location) {
   $scope.logout = function() {

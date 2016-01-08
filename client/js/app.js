@@ -8,7 +8,10 @@ app.config(["$routeProvider","$locationProvider",function($routeProvider,$locati
   }).
   when('/post/:id/edit',{
     templateUrl: './templates/editPost.html',
-    controller: 'EditController'
+    controller: 'EditController',
+    resolve:{
+      logincheck: checkLoggedin
+    }
   }).
   when('/login',{
     templateUrl: './templates/login.html',
@@ -19,10 +22,7 @@ app.config(["$routeProvider","$locationProvider",function($routeProvider,$locati
     controller: 'SignUpController'
   }).
   when('/profile',{
-      templateUrl: './templates/profile.html',
-      resolve:{
-        logincheck: checkLoggedin
-      }
+      templateUrl: './templates/profile.html'
   }).
   otherwise({redirectTo: '/posts'});
 
