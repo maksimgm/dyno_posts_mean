@@ -1,13 +1,22 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a href="/posts" class="navbar-brand"><img ng-src="../img/dyno.png" alt="Dyno Share Logo" class="dynoLogo"></a>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a ng-click='formToggle()'>Add New Post</a></li>
-      </ul>
+<div ng-controller="NavController">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/posts" class="navbar-brand"><img ng-src="../img/dyno.png" alt="Dyno Share Logo" class="dynoLogo"></a>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a ng-click='formToggle()'>Add New Post</a></li>
+        </ul>
+      </div>
+        <span ng-show="!currentUser">
+           <a href="#login">Login</a> |
+           <a href="#signup">Sign Up</a>
+         </span>
+         <span ng-show="currentUser">
+           <a href="#profile">Profile</a> |
+         </span>
     </div>
-  </div>
-</nav>
+  </nav>
+</div>
 <!-- new post -->
 <div class="container">
     <div class="col-xs-10 col-xs-offset-1">

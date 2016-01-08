@@ -16,9 +16,33 @@ app.config(["$routeProvider","$locationProvider",function($routeProvider,$locati
   }).
   when('/signup',{
     templateUrl: './templates/signup.html',
-    controller: 'SignupController'
+    controller: 'SignUpController'
+  }).
+  when('/profile',{
+      templateUrl: './templates/profile.html',
+      resolve:{
+        logincheck: checkLoggedin
+      }
   }).
   otherwise({redirectTo: '/posts'});
 
-  $locationProvider.html5Mode(true);
+  //$locationProvider.html5Mode(true);
 }]);
+
+var checkLoggedin = function($q, $timeout, $http, $location, $rootScope) {
+  var deferred = $q.defer();
+
+  $http.get('/loggedin').success(function(user) {
+    $rootScope.errorMessage = null;
+    //User is Authenticated
+    if (user !== '0') {
+      $rootScope.currentUser = user;
+      deferred.resolve();
+    } else { //User is not Authenticated
+      $rootScope.errorMessage = 'You need to log in.';
+      deferred.reject();
+      $location.url('/login');
+    }
+  });
+  return deferred.promise;
+}

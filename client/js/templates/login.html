@@ -1,15 +1,15 @@
-<d<div class="container">
+<div class="container">
     <div class="col-xs-6 col-xs-offset-3 well">
         <form action="javascript:void(0)">
             <div class="form-group">
                 <label for="username">Username</label>
-                <input class="form-control" type="text" ng-model="user.username"id="username"></input>
+                <input class="form-control" type="text" ng-model="user.username"id="username">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input class="form-control" type="text" ng-model='user.password' id="password">
+                <input class="form-control" type="password" ng-model='user.password' id="password">
             </div>
-            <input class="btn btn-md btn-success pull-right" type="submit" value="Login"></input>
+            <button class="btn btn-md btn-success pull-right" type="submit" ng-click="login(user)">Login</button>
             <a class="btn btn-md" type="button" ng-href="./signup.html">Sign Up</a>
         </form>
     </div>

@@ -64,26 +64,36 @@ app.controller('EditController',["$scope","PostService","$location","$routeParam
 
 }]);
 
-app.controller('LoginController',["$scope","$rootScope","$location","$routeParams","$http", function($scope, $rootScope, PostService, $location, $routeParams, $http){
-  //loging in a user
-  $scope.login = function(user){
-    console.log(user);
-    $http.post('/api/login', user)
-        .then(function(data){
-          $rootScope.currentUser = data
-          $location.url('/posts')
-        })
-  }
-}]);
-
-app.controller('SignupController',["$scope","$rootScope","$location","$routeParams","$http", function($scope, $rootScope, PostService, $location, $routeParams, $http){
-//signing up a user
-  $scope.signup = function(user){
-    console.log(user);
-    $http.post('/signup', user)
-        .then(function(data){
-          $rootScope.currentUser = user;
-          console.log(user);
+app.controller("NavController", function($rootScope, $scope, $http, $location) {
+  $scope.logout = function() {
+    $http.post("/logout")
+        .success(function() {
+          $rootScope.currentUser = null;
+          $location.url("/posts");
         });
   }
-}]);
+});
+
+app.controller("SignUpController", function($scope, $http, $rootScope, $location) {
+  $scope.signup = function(user) {
+
+    console.log(user);
+
+    $http.post('/signup', user)
+        .success(function(user) {
+          $rootScope.currentUser = user;
+          $location.url("/posts");
+        });
+
+  }
+});
+
+app.controller("LoginController", function($location, $scope, $http, $rootScope) {
+  $scope.login = function(user) {
+    $http.post('/login', user)
+        .success(function(response) {
+          $rootScope.currentUser = response;
+          $location.url("/posts");
+        });
+  }
+});

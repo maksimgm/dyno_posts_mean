@@ -1,14 +1,14 @@
 var express = require("express");
 var app = express();
-var postRoutes = require('./routes/posts');
-var userRoutes = require('./routes/users');
-var path = require('path');
 
 //Passport
 var passport = require('passport');
+var postRoutes = require('./routes/posts');
+
+var path = require('path');
 var LocalStrategy = require('passport-local').Strategy;
 //pass passport for config
-//require('./config/passport')(passport);
+require('./config/passport')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -39,7 +39,7 @@ app.use('/templates',express.static(path.join(__dirname, "../client/js/templates
 
 // prefix added to the begining of a path in the 'todoRoutes'
 app.use('/api/posts', postRoutes);
-app.use('/api/users', userRoutes);
+require('./routes/users')(app,passport);
 
 app.get("*", function(req,res){
   res.sendFile(path.join(__dirname, '../client', 'index.html'));
