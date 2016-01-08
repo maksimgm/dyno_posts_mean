@@ -8,9 +8,8 @@ app.controller('MainController',["$scope","PostService","$location", function($s
   $scope.formToggle = function(){
     $scope.postToggle = !$scope.postToggle;
   };
-  //add a post to the DB and the array on the front end
+
   $scope.addPost = function(post){
-    //   // BREAKS ON LINE 22...
     $scope.post.votes = 0;
     PostService.addPost(post).then(function(data){
       if(data){
@@ -76,15 +75,12 @@ app.controller("NavController", function($rootScope, $scope, $http, $location) {
 
 app.controller("SignUpController", function($scope, $http, $rootScope, $location) {
   $scope.signup = function(user) {
-
     console.log(user);
-
     $http.post('/signup', user)
         .success(function(user) {
           $rootScope.currentUser = user;
           $location.url("/posts");
         });
-
   }
 });
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="dynoPosts">
 <head>
   <meta charset="UTF-8">
   <title>Dyno Share</title>
@@ -14,9 +14,37 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
 <base href="/">
-  <a href="#logout" ng-click="logout()">Logout</a>
+
 </head>
-<body ng-app="dynoPosts">
+<nav class="navbar navbar-default" ng-controller="NavController">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="/posts" class="navbar-brand"><img ng-src="../img/dyno.png" alt="Dyno Share Logo" class="dynoLogo"></a>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a ng-click='formToggle()'>Add New Post</a></li>
+      </ul>
+    </div>
+
+    <div class="nav navbar-nav navbar-right">
+        <span ng-show="!currentUser">
+          <ul>
+            <li><a ng-href="#login">Login</a></li>
+          </ul>
+
+           <a ng-href="#signup">Sign Up</a>
+         </span>
+         <span ng-show="currentUser">
+           <a ng-href="#profile">Profile</a> |
+         </span>
+
+        <span ng-show="currentUser">
+          <a href="#logout" ng-click="logout()">Logout</a>
+        </span>
+
+    </div>
+  </div>
+</nav>
+<body>
   <div ng-view></div>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-route.js"></script>
