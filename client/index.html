@@ -20,27 +20,20 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a href="/posts" class="navbar-brand"><img ng-src="../img/dyno.png" alt="Dyno Share Logo" class="dynoLogo"></a>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a ng-click='formToggle()'>Add New Post</a></li>
-      </ul>
     </div>
-
     <div class="nav navbar-nav navbar-right">
-        <span ng-show="!currentUser">
-          <ul>
-            <li><a ng-href="#login">Login</a></li>
-          </ul>
-
-           <a ng-href="#signup">Sign Up</a>
-         </span>
-         <span ng-show="currentUser">
-           <a ng-href="#profile">Profile</a> |
-         </span>
-
-        <span ng-show="currentUser">
-          <a href="#logout" ng-click="logout()">Logout</a>
-        </span>
-
+      <span ng-show="!currentUser">
+        <ul>
+          <li><a ng-href="#login">Login</a></li>
+        </ul>
+         <a ng-href="#signup">Sign Up</a>
+       </span>
+       <span ng-show="currentUser">
+         <a ng-href="#profile">Profile</a>
+       </span>
+       <span ng-show="currentUser">
+         <a href="#logout" ng-click="logout()">Logout</a>
+       </span>
     </div>
   </div>
 </nav>
